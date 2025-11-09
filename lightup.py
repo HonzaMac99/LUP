@@ -5,9 +5,10 @@ from pysat.formula import CNF
 from pysat.solvers import Glucose3
 from pysat.card import CardEnc, EncType
 
-# in_str = input()
-# in_str = "WWBBWWWBWBWWBWWW4WBB0W0WW4WWWWWWWWWWWWWBWWWWWWWWWWWWWWWWWW2WBWW2WWWWBWWW1WWWWWWWWW2WWWWWWWWWWWWWWW1W"
-in_str = "WWWBW0BWWWWWWWWWWW12WBWWW"
+in_str = input()
+# in_str = "WWWWBBW01WBWWWBWWW3WWBWWWWWWWW1W2WBWWW3WW1WW0WWWWWWW1WBWWWBWBWWWBWWWWWWWBWWWWWWW4WBBBWWWWWWW1WWWWWWWWB1WBWWWWWWBWWWWWWWWWW1WW1WWWW0WBBWB1WWWWWWWWWWWWWWW0BW1BWBWWWW3WWBWWWWWWWWWWBWWWWWWBWB0WWWWWWWW1WWWWWWW0BBW1WWWWWWWBWWWWWWW1WWW1WBWWWBW3WWWWWWW1WW0WW2WWWBW3WBWWWWWWWWBWW2WWWBWWWBWBBWBBWWWW"
+# in_str = "WWWBW0BWWWWWWWWWWW12WBWWW"
+# in_str = "WWWWWW4WW2WWWWWW"
 # in_str = "WW2W"
 n = int(math.sqrt(len(in_str)))
 assert n**2 == len(in_str), "invalid input length!"
@@ -17,6 +18,8 @@ def LB(i, j):
 
 def IL(i, j):
     return n**2 + i*n + j + 1
+
+max_var = n**2 + n**2 + n + 100
 
 cnf = CNF()
 
@@ -102,16 +105,20 @@ for i in range(n):
             neighbor_LBs = [LB(a, b) for (a, b) in get_black_neighbors(i, j)]
             if lb_count == -1:
                 continue # there is simply no restriction
+            elif lb_count > len(neighbor_LBs):
+                print("0")
+                exit()
             elif lb_count == 0:
                 for lb in neighbor_LBs:
                     cnf.append([-lb])
             elif lb_count == len(neighbor_LBs):
                 for lb in neighbor_LBs:
                     cnf.append([lb])
+            elif lb_count == len(neighbor_LBs) - 1 or lb_count == 1:
+                cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.pairwise))
             else:
-                # cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.seqcounter))
-                # cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.pairwise))
-                cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.totalizer))
+                # cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.seqcounter, top_id=max_var))
+                cnf.extend(CardEnc.equals(lits=neighbor_LBs, bound=lb_count, encoding=EncType.totalizer, top_id=max_var))
 
 # Sanity check
 for c in cnf.clauses:
@@ -122,14 +129,14 @@ solver = Glucose3(bootstrap_with=cnf.clauses)
 success = solver.solve()
 vars = solver.get_model()
 
-print("CNF:", cnf.clauses)
-print("SAT:", success)
-print("Model:", vars)
+# print("CNF:", cnf.clauses)
+# print("SAT:", success)
+# print("Model:", vars)
 
 # compose the output sting
 if success:
     out_str = in_str
-    for i in range(len(vars)//2):
+    for i in range(n*n):
         if vars[i] > 0:
             out_str = out_str[:i] + "L" + out_str[i+1:]
 else:

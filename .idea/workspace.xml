@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="666e6baa-2316-406d-8c45-5f4386b7e124" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/LUP.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/lightup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LUP/task01.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lightup.py" beforeDir="false" afterPath="$PROJECT_DIR$/lightup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +32,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Doctests in card.executor": "Run",
-    "Python.lightup.executor": "Run",
-    "Python.task1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/honzamac/Edu/m5/LUP",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Doctests in card.executor&quot;: &quot;Run&quot;,
+    &quot;Python.lightup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.task1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/honzamac/Edu/m5/LUP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
